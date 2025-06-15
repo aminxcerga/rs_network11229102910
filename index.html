@@ -1,183 +1,94 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>مودهای محبوب ماینکرفت</title>
-<style>
-  body {
-    font-family: Tahoma, sans-serif;
-    background: #121212;
-    color: #eee;
-    margin: 0; padding: 20px;
-    direction: rtl;
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #00ff99;
-    text-shadow: 0 0 5px #00ff99;
-  }
-  .mods-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
-    gap: 20px;
-  }
-  .mod-card {
-    background: #222;
-    border-radius: 8px;
-    box-shadow: 0 0 10px #00ff99a0;
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.3s ease;
-  }
-  .mod-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px #00ff99;
-  }
-  .mod-card img {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border: 2px solid #00ff99;
-    background: #111;
-  }
-  .mod-card a {
-    color: #00ff99;
-    text-decoration: none;
-    font-weight: bold;
-    display: block;
-    margin-top: 5px;
-  }
-  .mod-card a:hover {
-    text-decoration: underline;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>مودهای ماینکرفت</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      font-family: Tahoma, sans-serif;
+      color: #fff;
+      padding: 30px;
+      direction: rtl;
+    }
+    h1 {
+      text-align: center;
+      color: #00ffcc;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    .card {
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px #00ffcc80;
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00ffcc;
+    }
+    .card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .card a {
+      text-decoration: none;
+      color: #00ffcc;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-
-<h1>مودهای محبوب ماینکرفت</h1>
-<div class="mods-container" id="modsContainer"></div>
-
-<script>
-  const mods = [
-    {
-      "name": "Just Enough Items (JEI)",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/jei",
-      "image": "https://media.forgecdn.net/avatars/40/215/637073017106077914.png"
-    },
-    {
-      "name": "JourneyMap",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/journeymap",
-      "image": "https://media.forgecdn.net/avatars/40/346/637086390120576584.png"
-    },
-    {
-      "name": "Biomes O' Plenty",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/biomes-o-plenty",
-      "image": "https://media.forgecdn.net/avatars/40/377/637104481153824129.png"
-    },
-    {
-      "name": "Chisel",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/chisel",
-      "image": "https://media.forgecdn.net/avatars/40/377/637105875735578123.png"
-    },
-    {
-      "name": "Tinkers' Construct",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/tinkers-construct",
-      "image": "https://media.forgecdn.net/avatars/40/158/637014855073627249.png"
-    },
-    {
-      "name": "Pam's HarvestCraft",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/pams-harvestcraft",
-      "image": "https://media.forgecdn.net/avatars/40/339/637085682645785544.png"
-    },
-    {
-      "name": "Thermal Expansion",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/thermal-expansion",
-      "image": "https://media.forgecdn.net/avatars/40/378/637106036409327204.png"
-    },
-    {
-      "name": "Applied Energistics 2",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2",
-      "image": "https://media.forgecdn.net/avatars/40/307/637082378013017127.png"
-    },
-    {
-      "name": "Botania",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/botania",
-      "image": "https://media.forgecdn.net/avatars/40/146/637013172247437615.png"
-    },
-    {
-      "name": "Ender IO",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/ender-io",
-      "image": "https://media.forgecdn.net/avatars/40/205/637072823852474027.png"
-    },
-    {
-      "name": "Extra Utilities 2",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/extra-utilities",
-      "image": "https://media.forgecdn.net/avatars/40/164/637015569668477344.png"
-    },
-    {
-      "name": "IndustrialCraft 2",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/industrial-craft",
-      "image": "https://media.forgecdn.net/avatars/40/306/637082189753726926.png"
-    },
-    {
-      "name": "Draconic Evolution",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/draconic-evolution",
-      "image": "https://media.forgecdn.net/avatars/40/113/637011961340573853.png"
-    },
-    {
-      "name": "BuildCraft",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/buildcraft",
-      "image": "https://media.forgecdn.net/avatars/40/102/637011657438828128.png"
-    },
-    {
-      "name": "Immersive Engineering",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/immersive-engineering",
-      "image": "https://media.forgecdn.net/avatars/40/235/637074842812256547.png"
-    },
-    {
-      "name": "ComputerCraft",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/computercraft",
-      "image": "https://media.forgecdn.net/avatars/40/232/637074432024787367.png"
-    },
-    {
-      "name": "Refined Storage",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/refined-storage",
-      "image": "https://media.forgecdn.net/avatars/40/115/637012033816591014.png"
-    },
-    {
-      "name": "Mystical Agriculture",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/mystical-agriculture",
-      "image": "https://media.forgecdn.net/avatars/40/201/637072257778275140.png"
-    },
-    {
-      "name": "Waystones",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/waystones",
-      "image": "https://media.forgecdn.net/avatars/40/234/637074693691639857.png"
-    },
-    {
-      "name": "RLCraft",
-      "url": "https://www.curseforge.com/minecraft/modpacks/rlcraft",
-      "image": "https://media.forgecdn.net/avatars/40/168/637015951681859404.png"
-    }
-  ];
-
-  const container = document.getElementById('modsContainer');
-  mods.forEach(mod => {
-    const card = document.createElement('div');
-    card.className = 'mod-card';
-    card.innerHTML = `
-      <a href="${mod.url}" target="_blank" rel="noopener noreferrer" title="${mod.name}">
-        <img src="${mod.image}" alt="${mod.name}" />
-        <div>${mod.name}</div>
-      </a>
-    `;
-    container.appendChild(card);
-  });
-</script>
-
+  <h1>لیست مودهای محبوب ماینکرفت</h1>
+  <div class="grid">
+    <div class="card">
+      <img src="https://i.ibb.co/F3gsMpM/jei.png" alt="JEI">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/jei" target="_blank">Just Enough Items</a>
+    </div>
+    <div class="card">
+      <img src="https://i.ibb.co/yd2tV5D/journeymap.png" alt="JourneyMap">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/journeymap" target="_blank">JourneyMap</a>
+    </div>
+    <div class="card">
+      <img src="https://i.ibb.co/z4jJCr8/biomesoplenty.png" alt="Biomes O' Plenty">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/biomes-o-plenty" target="_blank">Biomes O' Plenty</a>
+    </div>
+    <div class="card">
+      <img src="https://i.ibb.co/svCK09N/chisel.png" alt="Chisel">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/chisel" target="_blank">Chisel</a>
+    </div>
+    <div class="card">
+      <img src="https://i.ibb.co/hWZzDLH/tconstruct.png" alt="Tinkers' Construct">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/tinkers-construct" target="_blank">Tinkers' Construct</a>
+    </div>
+    <div class="card">
+      <img src="https://i.ibb.co/T01P7qL/harvestcraft.png" alt="Pam's HarvestCraft">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/pams-harvestcraft" target="_blank">HarvestCraft</a>
+    </div>
+    <div class="card">
+      <img src="https://i.ibb.co/3Wb94Kp/applied.png" alt="AE2">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2" target="_blank">Applied Energistics 2</a>
+    </div>
+    <div class="card">
+      <img src="https://i.ibb.co/rQjNkYZ/botania.png" alt="Botania">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/botania" target="_blank">Botania</a>
+    </div>
+    <div class="card">
+      <img src="https://i.ibb.co/Fg82CB1/enderio.png" alt="Ender IO">
+      <a href="https://www.curseforge.com/minecraft/mc-mods/ender-io" target="_blank">Ender IO</a>
+    </div>
+    <div class="card">
+      <img src="https://i.ibb.co/ncSrb3G/rlcraft.png" alt="RLCraft">
+      <a href="https://www.curseforge.com/minecraft/modpacks/rlcraft" target="_blank">RLCraft</a>
+    </div>
+  </div>
 </body>
 </html>
