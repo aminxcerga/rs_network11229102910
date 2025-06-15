@@ -3,124 +3,114 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>لیست مودهای ماینکرفت</title>
+<title>مودهای ماینکرفت</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
-
   body {
+    background: #111;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    font-family: 'Vazirmatn', sans-serif;
-    color: #e0e0e0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 25px;
+    padding: 20px;
   }
-
-  h1 {
-    margin-bottom: 20px;
-    color: #00ffe7;
-    text-shadow: 0 0 10px #00ffe7aa;
-  }
-
-  .mods-container {
-    width: 100%;
+  .glaurung_blur_container_xyz123 {
+    backdrop-filter: blur(15px);
+    background: rgba(20, 20, 20, 0.5);
+    border-radius: 15px;
+    padding: 20px;
     max-width: 1200px;
+    margin: auto;
+    box-shadow: 0 0 30px #0ff7ff66;
+  }
+  .xornoth_mod_grid_container_987zyx {
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
     gap: 20px;
   }
-
-  .mod-card {
-    background: rgba(255 255 255 / 0.1);
-    border-radius: 15px;
-    box-shadow: 0 8px 32px 0 rgba(0, 255, 230, 0.3);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 15px;
+  .vexillus_mod_card_abc456 {
+    background: rgba(0,0,0,0.6);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 15px #00ffffaa;
     transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
-
-  .mod-card:hover {
+  .vexillus_mod_card_abc456:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 25px #00ffffcc;
   }
-
-  .mod-img {
-    width: 140px;
+  .quilarum_mod_image_321def {
+    width: 100%;
     height: 140px;
-    object-fit: contain;
-    border-radius: 10px;
-    margin-bottom: 12px;
-    box-shadow: 0 0 15px #00ffe7cc;
+    object-fit: cover;
+    display: block;
   }
-
-  .mod-name {
+  .molteron_mod_title_654zyx {
+    padding: 10px;
     font-weight: 700;
     font-size: 1.1rem;
-    margin-bottom: 8px;
+    color: #0ff;
     text-align: center;
   }
-
-  .mod-link {
-    background: #00ffe7;
-    color: #0b0c10;
-    font-weight: 700;
-    padding: 8px 14px;
-    border-radius: 12px;
+  .relexor_mod_link_852abc {
+    display: block;
+    background: #0ff;
+    color: #000;
+    text-align: center;
+    padding: 8px 0;
     text-decoration: none;
-    user-select: none;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    border-radius: 0 0 12px 12px;
+    transition: background 0.3s ease;
   }
-
-  .mod-link:hover {
-    background-color: #00b2a3;
+  .relexor_mod_link_852abc:hover {
+    background: #0cc;
   }
-
-  footer {
-    margin-top: 30px;
-    font-size: 0.9rem;
-    color: #66fcf1aa;
+  .loading_message_123 {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #0ff;
+    margin-top: 50px;
   }
 </style>
 </head>
 <body>
-
-<h1>لیست مودهای محبوب ماینکرفت</h1>
-
-<div class="mods-container" id="modsContainer">
-  <!-- کارت مودها اینجا بارگذاری میشه -->
-</div>
-
-<footer>توسعه داده شده توسط ChatGPT</footer>
+  <div class="glaurung_blur_container_xyz123">
+    <h1 style="text-align:center; margin-bottom: 30px;">90 مود اول ماینکرفت</h1>
+    <div id="modsGrid" class="xornoth_mod_grid_container_987zyx"></div>
+    <div id="loadingMessage" class="loading_message_123">در حال بارگذاری مودها...</div>
+  </div>
 
 <script>
-  fetch('mods.json')
-    .then(response => response.json())
-    .then(mods => {
-      const container = document.getElementById('modsContainer');
-      mods.forEach(mod => {
-        const card = document.createElement('div');
-        card.classList.add('mod-card');
+  async function loadMods() {
+    try {
+      const res = await fetch('https://raw.githubusercontent.com/aminxcerga/rs_network11229102910/refs/heads/main/mods.json');
+      if (!res.ok) throw new Error('خطا در دریافت داده');
+      const mods = await res.json();
 
-        card.innerHTML = `
-          <img class="mod-img" src="${mod.image}" alt="${mod.name}" loading="lazy" />
-          <div class="mod-name">${mod.name}</div>
-          <a href="${mod.url}" target="_blank" class="mod-link">مشاهده مود</a>
+      const modsGrid = document.getElementById('modsGrid');
+      const loadingMessage = document.getElementById('loadingMessage');
+      loadingMessage.style.display = 'none';
+
+      mods.slice(0, 90).forEach(mod => {
+        const modCard = document.createElement('div');
+        modCard.className = 'vexillus_mod_card_abc456';
+
+        modCard.innerHTML = `
+          <img class="quilarum_mod_image_321def" src="${mod.image}" alt="${mod.name}" loading="lazy" />
+          <div class="molteron_mod_title_654zyx">${mod.name}</div>
+          <a class="relexor_mod_link_852abc" href="${mod.link}" target="_blank" rel="noopener noreferrer">دانلود مود</a>
         `;
 
-        container.appendChild(card);
+        modsGrid.appendChild(modCard);
       });
-    })
-    .catch(err => {
-      document.getElementById('modsContainer').innerHTML = "<p>خطا در بارگذاری مودها.</p>";
-      console.error(err);
-    });
-</script>
 
+    } catch (err) {
+      const loadingMessage = document.getElementById('loadingMessage');
+      loadingMessage.textContent = 'خطا در دریافت مودها! لطفا بعدا تلاش کنید.';
+      loadingMessage.style.color = '#f00';
+      console.error(err);
+    }
+  }
+  loadMods();
+</script>
 </body>
 </html>
