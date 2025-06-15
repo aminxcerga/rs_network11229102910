@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>لیست مودهای ماینکرفت</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+  body {
+    margin: 0;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    font-family: 'Vazirmatn', sans-serif;
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    color: #00ffe7;
+    text-shadow: 0 0 10px #00ffe7aa;
+  }
+
+  .mods-container {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+    gap: 20px;
+  }
+
+  .mod-card {
+    background: rgba(255 255 255 / 0.1);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(0, 255, 230, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 15px;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mod-card:hover {
+    transform: scale(1.05);
+  }
+
+  .mod-img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    box-shadow: 0 0 15px #00ffe7cc;
+  }
+
+  .mod-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .mod-link {
+    background: #00ffe7;
+    color: #0b0c10;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .mod-link:hover {
+    background-color: #00b2a3;
+  }
+
+  footer {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #66fcf1aa;
+  }
+</style>
+</head>
+<body>
+
+<h1>لیست مودهای محبوب ماینکرفت</h1>
+
+<div class="mods-container" id="modsContainer">
+  <!-- کارت مودها اینجا بارگذاری میشه -->
+</div>
+
+<footer>توسعه داده شده توسط ChatGPT</footer>
+
+<script>
+  fetch('mods.json')
+    .then(response => response.json())
+    .then(mods => {
+      const container = document.getElementById('modsContainer');
+      mods.forEach(mod => {
+        const card = document.createElement('div');
+        card.classList.add('mod-card');
+
+        card.innerHTML = `
+          <img class="mod-img" src="${mod.image}" alt="${mod.name}" loading="lazy" />
+          <div class="mod-name">${mod.name}</div>
+          <a href="${mod.url}" target="_blank" class="mod-link">مشاهده مود</a>
+        `;
+
+        container.appendChild(card);
+      });
+    })
+    .catch(err => {
+      document.getElementById('modsContainer').innerHTML = "<p>خطا در بارگذاری مودها.</p>";
+      console.error(err);
+    });
+</script>
+
+</body>
+</html>
