@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>۵۰ بازی اول استیم</title>
+<style>
+  body {
+    margin: 0;
+    background: #121620;
+    color: #cfffff;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  .container {
+    backdrop-filter: blur(18px);
+    background: rgba(10,10,30,0.6);
+    border-radius: 25px;
+    padding: 25px;
+    max-width: 1300px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .card {
+    background: rgba(255 255 255 / 0.08);
+    border-radius: 15px;
+    width: 220px;
+    padding: 15px;
+    box-shadow: 0 0 14px rgb(12 220 255 / 0.55);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #a3f9ff;
+  }
+  .card:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 18px rgb(0 255 255 / 0.8);
+  }
+  .card img {
+    width: 100%;
+    border-radius: 11px;
+    margin-bottom: 12px;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+  }
+  .card h4 {
+    margin: 0;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
+  .btn-download {
+    margin-top: 10px;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #00d4ff, #0080ff);
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 0 8px #00aaffaa;
+    cursor: pointer;
+    user-select: none;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  .btn-download:hover {
+    background: linear-gradient(135deg, #00aaff, #005bbb);
+  }
+  h2 {
+    width: 100%;
+    text-align: center;
+    color: #0ff;
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+  <div class="container" id="gameContainer">
+    <h2>۵۰ بازی اول استیم</h2>
+  </div>
+
+<script>
+(async function() {
+  const container = document.getElementById('gameContainer');
+  try {
+    const res = await fetch('https://api.steampowered.com/ISteamApps/GetAppList/v2/');
+    if (!res.ok) throw new Error('خطا در دریافت لیست بازی‌ها');
+    const data = await res.json();
+    const apps = data.applist.apps.slice(0,50);
+
+    for(const app of apps) {
+      try {
+        const detailRes = await fetch(`https://store.steampowered.com/api/appdetails?appids=${app.appid}`);
+        if (!detailRes.ok) continue;
+        const detailData = await detailRes.json();
+        const appData = detailData[app.appid]?.data;
+        if (!appData || appData.type !== 'game') continue;
+
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${appData.header_image || 'https://via.placeholder.com/220x124?text=No+Image'}" alt="${appData.name}" />
+          <h4>${appData.name}</h4>
+          <button class="btn-download" onclick="alert('دانلود بازی ${appData.name} هنوز آماده نیست')">دانلود</button>
+        `;
+        container.appendChild(card);
+      } catch {}
+    }
+  } catch(e) {
+    container.innerHTML = '<p style="color:red; text-align:center; width:100%;">خطا در دریافت اطلاعات استیم</p>';
+  }
+})();
+</script>
+</body>
+</html>
