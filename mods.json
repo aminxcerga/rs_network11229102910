@@ -1,3 +1,4 @@
+[
   {
     "name": "Just Enough Items (JEI)",
     "url": "https://www.curseforge.com/minecraft/mc-mods/jei",
@@ -17,4 +18,85 @@
     "name": "Chisel",
     "url": "https://www.curseforge.com/minecraft/mc-mods/chisel",
     "image": "https://i.imgur.com/gME8qku.png"
+  },
+  {
+    "name": "Tinkers' Construct",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/tinkers-construct",
+    "image": "https://i.imgur.com/NtVYmCn.png"
+  },
+  {
+    "name": "Pam's HarvestCraft",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/pams-harvestcraft",
+    "image": "https://i.imgur.com/ATPXxJe.png"
+  },
+  {
+    "name": "Thermal Expansion",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/thermal-expansion",
+    "image": "https://i.imgur.com/6hD5MYV.png"
+  },
+  {
+    "name": "Applied Energistics 2",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2",
+    "image": "https://i.imgur.com/0CdqX2Q.png"
+  },
+  {
+    "name": "Botania",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/botania",
+    "image": "https://i.imgur.com/7ZfTN0J.png"
+  },
+  {
+    "name": "Ender IO",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/ender-io",
+    "image": "https://i.imgur.com/LRMNDOY.png"
+  },
+  {
+    "name": "Extra Utilities 2",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/extra-utilities",
+    "image": "https://i.imgur.com/7jYWnOx.png"
+  },
+  {
+    "name": "IndustrialCraft 2",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/industrial-craft",
+    "image": "https://i.imgur.com/5Qq9NGb.png"
+  },
+  {
+    "name": "Draconic Evolution",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/draconic-evolution",
+    "image": "https://i.imgur.com/dCZfERH.png"
+  },
+  {
+    "name": "BuildCraft",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/buildcraft",
+    "image": "https://i.imgur.com/9hVtXzF.png"
+  },
+  {
+    "name": "Immersive Engineering",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/immersive-engineering",
+    "image": "https://i.imgur.com/2dDw3hn.png"
+  },
+  {
+    "name": "ComputerCraft",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/computercraft",
+    "image": "https://i.imgur.com/7LNL3C2.png"
+  },
+  {
+    "name": "Refined Storage",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/refined-storage",
+    "image": "https://i.imgur.com/aTlkwvN.png"
+  },
+  {
+    "name": "Mystical Agriculture",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/mystical-agriculture",
+    "image": "https://i.imgur.com/wj8qlPz.png"
+  },
+  {
+    "name": "Waystones",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/waystones",
+    "image": "https://i.imgur.com/JoNWXsl.png"
+  },
+  {
+    "name": "RLCraft",
+    "url": "https://www.curseforge.com/minecraft/modpacks/rlcraft",
+    "image": "https://i.imgur.com/LaRZh2p.png"
   }
+]
